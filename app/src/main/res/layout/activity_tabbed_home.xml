@@ -6,6 +6,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="edu.valenciacollege.austinconcepcion.petproject.TabbedHome">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <fragment
+        android:name="edu.valenciacollege.austinconcepcion.petproject.SearchSettingsFragment"
+        android:id="@+id/search_settings"
+        tools:layout="@layout/fragment_search_settings"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+
+        <fragment
+            android:name="edu.valenciacollege.austinconcepcion.petproject.ListingFragment"
+            android:id="@+id/listings"
+            tools:layout="@layout/fragment_listing"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            />
+
+    </LinearLayout>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
