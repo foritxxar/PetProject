@@ -14,7 +14,7 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:id="@+id/date_picker"
+            android:id="@+id/date_button"
             android:layout_width="0dp"
             android:layout_height="41dp"
             android:layout_weight="1"
@@ -42,7 +42,9 @@
                 android:id="@+id/price_low_et"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2" />
+                android:layout_weight="2"
+                android:inputType="numberDecimal"
+                />
 
             <TextView
                 android:id="@+id/dash_dollar_sign"
@@ -55,17 +57,19 @@
                 android:id="@+id/price_high_et"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2" />
+                android:layout_weight="2"
+                android:inputType="numberDecimal"/>
         </LinearLayout>
 
         <EditText
             android:id="@+id/location_et"
             android:layout_width="0dp"
             android:layout_height="41dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:layout_weight="5"
             android:background="@drawable/text_wrap_box"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"/>
+            android:inputType="textPostalAddress" />
 
         <ImageButton
             android:id="@+id/location_button"
