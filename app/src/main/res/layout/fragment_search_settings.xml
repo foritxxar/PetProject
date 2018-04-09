@@ -1,13 +1,80 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.valenciacollege.austinconcepcion.petproject.SearchSettings">
+    tools:context="edu.valenciacollege.austinconcepcion.petproject.SearchSettings"
+    android:orientation="vertical"
+    >
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:id="@+id/basic_settings_linear"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
 
-</FrameLayout>
+        <ImageButton
+            android:id="@+id/date_picker"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:background="@drawable/ic_date_range_black_48dp" />
+
+        <LinearLayout
+            android:id="@+id/price_settings_linear"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_weight="4"
+            android:orientation="horizontal"
+            android:paddingHorizontal="5dp"
+            android:background="@drawable/text_wrap_box"
+            >
+
+            <TextView
+                android:id="@+id/dollar_sign"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="$"/>
+
+            <EditText
+                android:id="@+id/price_low_et"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+
+            <TextView
+                android:id="@+id/dash_dollar_sign"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="- $"/>
+
+            <EditText
+                android:id="@+id/price_high_et"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/location_et"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_weight="6"
+            android:background="@drawable/text_wrap_box"/>
+
+        <ImageButton
+            android:id="@+id/location_button"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <HorizontalScrollView
+        android:id="@+id/pet_selector_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"></HorizontalScrollView>
+</LinearLayout>
