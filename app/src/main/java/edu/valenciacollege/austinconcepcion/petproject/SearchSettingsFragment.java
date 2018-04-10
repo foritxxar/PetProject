@@ -10,90 +10,65 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link SearchSettingsFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link SearchSettingsFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class SearchSettingsFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+
+    View fragmentView;
     private EditText priceLowET, priceHighET;
     private ImageButton dateButton, locationButton;
     private HorizontalScrollView petHSV;
-    private ArrayList<Pets> myPets;
+    private LinearLayout imageList;
+    private Pets[] myPets;
+    private ImageButton[] petButtons;
 
-    private OnFragmentInteractionListener mListener;
 
     public SearchSettingsFragment() {    }
-
-    public static SearchSettingsFragment newInstance() {
-        SearchSettingsFragment fragment = new SearchSettingsFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_search_settings, container, false);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+    @Override
+    public void onStart(){
+        super.onStart();
+        findViews();
+        createSamplePets();
+
+    }
+
+    public void findViews(){
+        fragmentView = getView();
+        priceLowET = fragmentView.findViewById(R.id.price_low_et);
+        priceHighET = fragmentView.findViewById(R.id.price_high_et);
+        petHSV = fragmentView.findViewById(R.id.pet_selector_scroll);
+        imageList = fragmentView.findViewById(R.id.image_list);
+    }
+    public void createSamplePets(){
+        myPets = new Pets[3];
+        Pets shae = new Pets(0, 0, 2, false, "Shae","ic_sample_pet_shae_round");
+        Pets atlas = new Pets(1, 3, 1, false, "Atlas","ic_sample_pet_atlas_round");
+        Pets newton = new Pets(2, 3, 0, false, "Newton","ic_sample_pet_newton_round");
+        myPets[0] = shae;
+        myPets[1] = atlas;
+        myPets[2] = newton;
+    }
+
+    public void displayList(){
+
+        petButtons = new ImageButton[myPets.length];
+        for(int i = 0; i < myPets.length; i++){
+            petButtons[i] = new ImageButton(fragmentView.getContext());
+            int resId = fragmentView.getResources().getIdentifier(
+                    myPets[i].getImageName(), "drawable", (fragmentView.getContext().getPackageName()));
+            petButtons[i].setImageResource((resId));
         }
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
 }
