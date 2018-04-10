@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 
+import java.util.ArrayList;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,6 +30,7 @@ public class SearchSettingsFragment extends Fragment {
     private EditText priceLowET, priceHighET;
     private ImageButton dateButton, locationButton;
     private HorizontalScrollView petHSV;
+    private ArrayList<Pets> myPets;
 
     private OnFragmentInteractionListener mListener;
 
