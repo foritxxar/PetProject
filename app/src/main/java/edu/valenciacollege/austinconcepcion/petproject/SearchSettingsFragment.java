@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import java.lang.reflect.Array;
@@ -40,7 +41,7 @@ public class SearchSettingsFragment extends Fragment {
         super.onStart();
         findViews();
         createSamplePets();
-
+        displayList();
     }
 
     public void findViews(){
@@ -67,7 +68,15 @@ public class SearchSettingsFragment extends Fragment {
             petButtons[i] = new ImageButton(fragmentView.getContext());
             int resId = fragmentView.getResources().getIdentifier(
                     myPets[i].getImageName(), "drawable", (fragmentView.getContext().getPackageName()));
+            petButtons[i].setScaleType(ImageButton.ScaleType.FIT_CENTER);
             petButtons[i].setImageResource((resId));
+//            petButtons[i].setBackground();
+//            LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) petButtons[i].getLayoutParams();
+//
+//            params.height = 120; params.width = 120;
+//            petButtons[i].setLayoutParams(params);
+//            petButtons[i].setScaleType(ImageButton.ScaleType.FIT_XY);
+            imageList.addView(petButtons[i]);
         }
     }
 
